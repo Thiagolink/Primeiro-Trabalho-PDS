@@ -33,10 +33,10 @@ public class ToColor {
         int dataBuffInt = image.getRGB(x,y); 
 
         Color c = new Color(dataBuffInt);
-        int r = c.getRed()/2;
-        int g = c.getGreen()/2;
-        int b = c.getBlue()/2;
-        int color = (r << 16) | (g << 8) | b;
+        int redColor = c.getRed()/2;
+        int greenColor = c.getGreen()/2;
+        int blueColor = c.getBlue()/2;
+        int color = (redColor << 16) | (greenColor << 8) | blueColor;
         
         return color;
         
@@ -85,10 +85,10 @@ public class ToColor {
     public static int returnColor(int label, int numRegions){
        
        int reason = 255 / numRegions;
-       int g      = (label * reason) % 255;
-       int r      = (label * reason) % 255;
-       int b      = (label * reason) % 255;
-       int color  = (r << 16) | (g << 8) | b;
+       int greenColor      = (label * reason) % 255;
+       int redColor      = (label * reason) % 255;
+       int blueColor      = (label * reason) % 255;
+       int color  = (redColor << 16) | (greenColor << 8) | blueColor;
        
        return color;
    
