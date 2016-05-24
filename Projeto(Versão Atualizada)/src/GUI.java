@@ -118,21 +118,21 @@ public class GUI extends javax.swing.JFrame {
         colorLvlText = new javax.swing.JTextField();
         sizeLvlText = new javax.swing.JTextField();
         buttonSegment = new javax.swing.JButton();
-        Image = new javax.swing.JLabel();
+        areaImage = new javax.swing.JLabel();
         showButtonSegment = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        blurLvl = new javax.swing.JLabel();
+        corLvl = new javax.swing.JLabel();
+        sizeLvl = new javax.swing.JLabel();
+        numSegmentations = new javax.swing.JLabel();
         openButton = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
+        areaText = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listRegionSegments = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
         listFiles = new javax.swing.JList();
         findButton = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        comboSearch = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,9 +149,9 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        Image.addMouseListener(new java.awt.event.MouseAdapter() {
+        areaImage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ImageMouseClicked(evt);
+                areaImageMouseClicked(evt);
             }
         });
 
@@ -162,13 +162,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("BlurLevel");
+        blurLvl.setText("BlurLevel");
 
-        jLabel2.setText("CorLevel");
+        corLvl.setText("CorLevel");
 
-        jLabel3.setText("SizeLevel");
+        sizeLvl.setText("SizeLevel");
 
-        jLabel4.setText("Número de Segmentações: ");
+        numSegmentations.setText("Número de Segmentações: ");
 
         openButton.setText("Abrir Imagem");
         openButton.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +205,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setMaximumRowCount(4);
+        comboSearch.setMaximumRowCount(4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,36 +218,36 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(96, 96, 96)
                                 .addComponent(findButton))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(areaText, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(addButton))
                                 .addComponent(buttonSegment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
+                                        .addComponent(blurLvl)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(blurLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(openButton)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
+                                        .addComponent(corLvl)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(colorLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
+                                        .addComponent(sizeLvl)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(sizeLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel4))
+                                    .addComponent(numSegmentations))
                                 .addComponent(showButtonSegment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(10, 10, 10)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                         .addGap(145, 145, 145)
-                        .addComponent(Image, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(areaImage, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(219, 219, 219))
         );
@@ -261,17 +261,17 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(blurLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(blurLvl))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(colorLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(corLvl))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(sizeLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(sizeLvl))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
+                        .addComponent(numSegmentations)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonSegment)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -281,20 +281,20 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addButton)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(areaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(findButton)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(comboSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Image, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(areaImage, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(92, 92, 92))
         );
 
-        Image.getAccessibleContext().setAccessibleDescription("");
+        areaImage.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -313,12 +313,12 @@ public class GUI extends javax.swing.JFrame {
             manager.saveInformation(imageTreatment, blurLvlText.getText(), colorLvlText.getText(), sizeLvlText.getText());
             
             seg        = imageTreatment.imageSegmentation(imageTreatment.getFilename(), imageTreatment.getBlurLevel(), imageTreatment.getColor(), imageTreatment.getMinSize());
-            Image.setIcon(imageTreatment.markedImage(seg));
+            areaImage.setIcon(imageTreatment.markedImage(seg));
             
             
             setRegionsNames = fileToTAD.nameAllRegions();
             
-            jLabel4.setText("Número de Segmentações: " + imageTreatment.totalRegions(seg));
+            numSegmentations.setText("Número de Segmentações: " + imageTreatment.totalRegions(seg));
                       
             listInt = tadManipulation.addValue(listInt, seg.getTotalRegions());
         }
@@ -343,7 +343,7 @@ public class GUI extends javax.swing.JFrame {
             
             manager.saveInformation(imageTreatment, blurLvlText.getText(), colorLvlText.getText(), sizeLvlText.getText());
             
-            Image.setIcon(toColor.colorSegmentation(seg));
+            areaImage.setIcon(toColor.colorSegmentation(seg));
             
         }
         catch(Exception NullPointerException){
@@ -357,7 +357,7 @@ public class GUI extends javax.swing.JFrame {
         Método que cria o botão Abrir Arquivo, define o caminho até a imagem e coloca no label Image.
     */
     private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openButtonActionPerformed
-        manager.openFile(Image, imageTreatment, listInt, listRegionSegments, list, map);
+        manager.openFile(areaImage, imageTreatment, listInt, listRegionSegments, list, map);
         
         listInt.clear();
         
@@ -370,15 +370,15 @@ public class GUI extends javax.swing.JFrame {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         if(mouseX1 == 0 || mouseY1 == 0)
             JOptionPane.showMessageDialog(null,"A área não pode ser registrada, pois não foi selecionada na imagem.", "Arquivo",  JOptionPane.INFORMATION_MESSAGE);
-        else if(jTextField4.getText() == null)
+        else if(areaText.getText() == null)
             JOptionPane.showMessageDialog(null,"A área não pode ser registrada, pois não foi definido um nome.", "Arquivo",  JOptionPane.INFORMATION_MESSAGE);
-        else if(checking.checkName(list, jTextField4.getText()))
+        else if(checking.checkName(list, areaText.getText()))
             JOptionPane.showMessageDialog(null,"A área não pode ser registrada, pois já existe uma área com esse nome.", "Arquivo",  JOptionPane.INFORMATION_MESSAGE);
         else if(checking.checkRegion(list, map, imageTreatment.defineRegion(mouseX1, mouseY1, seg), seg))
             JOptionPane.showMessageDialog(null,"A área não pode ser registrada, pois essa área já foi registrada.", "Arquivo",  JOptionPane.INFORMATION_MESSAGE);
 
         else{
-            writeFiles.writeInFileRegions(imageTreatment.getFilename(), jTextField4.getText(), Integer.toString(mouseX1), Integer.toString(mouseY1), Integer.toString(mouseX2), Integer.toString(mouseY2));
+            writeFiles.writeInFileRegions(imageTreatment.getFilename(), areaText.getText(), Integer.toString(mouseX1), Integer.toString(mouseY1), Integer.toString(mouseX2), Integer.toString(mouseY2));
             manager.transformTextJList1(imageTreatment, listRegionSegments, list, map);
         }   
         
@@ -394,7 +394,7 @@ public class GUI extends javax.swing.JFrame {
      * Método para capturar as coordenas da imagem clicadas pelo mouse.
      * @param evt 
      */
-    private void ImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ImageMouseClicked
+    private void areaImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_areaImageMouseClicked
         int region = 0;
         if(mouseX1 == 0 && mouseY1 == 0){
             mouseX1 = evt.getX();
@@ -408,7 +408,7 @@ public class GUI extends javax.swing.JFrame {
             region = imageTreatment.defineRegion(mouseX2, mouseY2, seg);
             System.out.println(mouseX2+","+mouseY2+","+region+"mouse2");
         }
-    }//GEN-LAST:event_ImageMouseClicked
+    }//GEN-LAST:event_areaImageMouseClicked
     
     /**
      * Método para realizar eventos quando o mouse clickar em algum elemento da Jlist1.
@@ -426,10 +426,10 @@ public class GUI extends javax.swing.JFrame {
                 int region2;
                 if (coordenadas[2] != 0 && coordenadas[3] != 0){
                     region2 = imageTreatment.defineRegion(coordenadas[2], coordenadas[3], seg);
-                    Image.setIcon(toColor.whitening(seg, region2, listInt));
+                    areaImage.setIcon(toColor.whitening(seg, region2, listInt));
                 }
                 
-                Image.setIcon(toColor.whitening(seg, region1, listInt));
+                areaImage.setIcon(toColor.whitening(seg, region1, listInt));
 
           }
         }
@@ -448,7 +448,7 @@ public class GUI extends javax.swing.JFrame {
                 manager.readValues(o.toString(), imageTreatment, blurLvlText, colorLvlText, sizeLvlText);
                 
                 seg        = imageTreatment.imageSegmentation(imageTreatment.getFilename(), imageTreatment.getBlurLevel(), imageTreatment.getColor(), imageTreatment.getMinSize());
-                Image.setIcon(imageTreatment.markedImage(seg));
+                areaImage.setIcon(imageTreatment.markedImage(seg));
                 manager.transformTextJList1(imageTreatment, listRegionSegments, list, map);
                 map = fileToTAD.transformToMap(imageTreatment.getFilename());
                 listInt.clear();
@@ -464,7 +464,7 @@ public class GUI extends javax.swing.JFrame {
      * @param evt 
      */
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
-        String selected = jComboBox1.getSelectedItem().toString();
+        String selected = comboSearch.getSelectedItem().toString();
         System.out.println(System.getProperty("user.dir")+"\\imgs");
         
         try {
@@ -486,10 +486,10 @@ public class GUI extends javax.swing.JFrame {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
    
-        jComboBox1.removeAllItems();
+        comboSearch.removeAllItems();
         Iterator<String> it = setRegionsNames.iterator();
         while(it.hasNext()){
-            jComboBox1.addItem(it.next());
+            comboSearch.addItem(it.next());
         }
         
         Iterator<String> ite = setRegionsNames.iterator();
@@ -536,24 +536,24 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Image;
     private javax.swing.JButton addButton;
+    private javax.swing.JLabel areaImage;
+    private javax.swing.JTextField areaText;
+    private javax.swing.JLabel blurLvl;
     private javax.swing.JTextField blurLvlText;
     private javax.swing.JButton buttonSegment;
     private javax.swing.JTextField colorLvlText;
+    private javax.swing.JComboBox comboSearch;
+    private javax.swing.JLabel corLvl;
     private javax.swing.JButton findButton;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JList listFiles;
     private javax.swing.JList listRegionSegments;
+    private javax.swing.JLabel numSegmentations;
     private javax.swing.JButton openButton;
     private javax.swing.JButton showButtonSegment;
+    private javax.swing.JLabel sizeLvl;
     private javax.swing.JTextField sizeLvlText;
     // End of variables declaration//GEN-END:variables
 }
