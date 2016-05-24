@@ -65,7 +65,7 @@ public class Manager {
             try {
                 imageTreatment.setFilename(scaleImage.getScaledImage(imageTreatment.getFilename(), 340, 414));
             } catch (IOException ex) {
-                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SystemSegmentationGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         
             Image.setIcon(imageTreatment.originalImage(imageTreatment.getFilename()));

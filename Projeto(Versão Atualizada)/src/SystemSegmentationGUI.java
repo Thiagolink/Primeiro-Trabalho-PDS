@@ -34,14 +34,19 @@ import javax.swing.JOptionPane;
  *
  * @author Thiago Oliveira
  */
-public class GUI extends javax.swing.JFrame {
+public class SystemSegmentationGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form GUI
      */
     
     //Inteiro com localização do mouse em x.
-    int mouseX1 = 0, mouseX2 = 0;
+    int mouseX1 = 0,
+
+    /**
+     * Creates new form SystemSegmentationGUI
+     */
+    mouseX2 = 0;
     //Inteiro com localização do mouse em y.
     int mouseY1 = 0, mouseY2 = 0;
     //Informações da Imagem segmentada.
@@ -98,7 +103,7 @@ public class GUI extends javax.swing.JFrame {
     
     
     
-    public GUI() {
+    public SystemSegmentationGUI() {
         initComponents();
         createTextFiles.createFolder();
         initRegions();
@@ -328,7 +333,7 @@ public class GUI extends javax.swing.JFrame {
         catch(NumberFormatException erro){
             JOptionPane.showMessageDialog(null,"A segmentação não ocorreu, pois os valores não estão no formato correto.", "Valores",  JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SystemSegmentationGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_buttonSegmentActionPerformed
@@ -470,7 +475,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             manager.transformTextJList2(selected, listFiles, listRegions);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SystemSegmentationGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         
@@ -483,7 +488,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             setRegionsNames = fileToTAD.nameAllRegions();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SystemSegmentationGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
    
         comboSearch.removeAllItems();
@@ -516,21 +521,23 @@ public class GUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SystemSegmentationGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SystemSegmentationGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SystemSegmentationGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SystemSegmentationGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI().setVisible(true);
+                new SystemSegmentationGUI().setVisible(true);
             }
         });
     }
