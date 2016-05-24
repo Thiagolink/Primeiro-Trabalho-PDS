@@ -13,9 +13,7 @@ import Files.ReadTextFiles;
 import Files.RenameTextFiles;
 import Files.WriteTextFiles;
 import br.ufrn.imd.lp2.imagesegmentation.ImageInformation;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,7 +22,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /*
@@ -117,38 +114,38 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        blurLvlText = new javax.swing.JTextField();
+        colorLvlText = new javax.swing.JTextField();
+        sizeLvlText = new javax.swing.JTextField();
+        buttonSegment = new javax.swing.JButton();
         Image = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        showButtonSegment = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        openButton = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        listRegionSegments = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
-        jButton5 = new javax.swing.JButton();
+        listFiles = new javax.swing.JList();
+        findButton = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setText("0.99");
+        blurLvlText.setText("0.99");
 
-        jTextField2.setText("50");
+        colorLvlText.setText("50");
 
-        jTextField3.setText("500");
+        sizeLvlText.setText("500");
 
-        jButton1.setText("Segmentar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonSegment.setText("Segmentar");
+        buttonSegment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonSegmentActionPerformed(evt);
             }
         });
 
@@ -158,10 +155,10 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Mostrar Segmentação");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        showButtonSegment.setText("Mostrar Segmentação");
+        showButtonSegment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                showButtonSegmentActionPerformed(evt);
             }
         });
 
@@ -173,38 +170,38 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel4.setText("Número de Segmentações: ");
 
-        jButton3.setText("Abrir Imagem");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        openButton.setText("Abrir Imagem");
+        openButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                openButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("+");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        addButton.setText("+");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                addButtonActionPerformed(evt);
             }
         });
 
-        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+        listRegionSegments.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jList1MouseClicked(evt);
+                listRegionSegmentsMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listRegionSegments);
 
-        jList2.addMouseListener(new java.awt.event.MouseAdapter() {
+        listFiles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jList2MouseClicked(evt);
+                listFilesMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(listFiles);
 
-        jButton5.setText("Pesquisar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        findButton.setText("Pesquisar");
+        findButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                findButtonActionPerformed(evt);
             }
         });
 
@@ -223,29 +220,29 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(96, 96, 96)
-                                .addComponent(jButton5))
+                                .addComponent(findButton))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton4))
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(addButton))
+                                .addComponent(buttonSegment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton3)
+                                        .addComponent(blurLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(openButton)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(colorLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(sizeLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel4))
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(showButtonSegment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(10, 10, 10)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
@@ -260,37 +257,37 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(openButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(blurLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(colorLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sizeLvlText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(buttonSegment)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(showButtonSegment)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4)
+                            .addComponent(addButton)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton5)
+                            .addComponent(findButton)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 11, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Image, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,12 +305,12 @@ public class GUI extends javax.swing.JFrame {
         Método que coloca a imagem segmentada no label Image usando os valores de blur, cor, min e filename,
         define o tamanho da label de acordo com o tamanho da imagem e define a quantidade total de regiões segmentadas. .
     */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonSegmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSegmentActionPerformed
         try{
          
-            writeFiles.writeFileValue(imageTreatment.getFilename(), jTextField1.getText(), jTextField2.getText(), jTextField3.getText());
+            writeFiles.writeFileValue(imageTreatment.getFilename(), blurLvlText.getText(), colorLvlText.getText(), sizeLvlText.getText());
                 
-            manager.saveInformation(imageTreatment, jTextField1.getText(), jTextField2.getText(), jTextField3.getText());
+            manager.saveInformation(imageTreatment, blurLvlText.getText(), colorLvlText.getText(), sizeLvlText.getText());
             
             seg        = imageTreatment.imageSegmentation(imageTreatment.getFilename(), imageTreatment.getBlurLevel(), imageTreatment.getColor(), imageTreatment.getMinSize());
             Image.setIcon(imageTreatment.markedImage(seg));
@@ -334,17 +331,17 @@ public class GUI extends javax.swing.JFrame {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonSegmentActionPerformed
 
     /**
         Método que coloca a imagem rotulada no label Image, usando os valores de blur, cor, min e filename
     */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void showButtonSegmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonSegmentActionPerformed
         
         
         try{
             
-            manager.saveInformation(imageTreatment, jTextField1.getText(), jTextField2.getText(), jTextField3.getText());
+            manager.saveInformation(imageTreatment, blurLvlText.getText(), colorLvlText.getText(), sizeLvlText.getText());
             
             Image.setIcon(toColor.colorSegmentation(seg));
             
@@ -354,23 +351,23 @@ public class GUI extends javax.swing.JFrame {
             }
         
         
-        }//GEN-LAST:event_jButton2ActionPerformed
+        }//GEN-LAST:event_showButtonSegmentActionPerformed
         
     /**
         Método que cria o botão Abrir Arquivo, define o caminho até a imagem e coloca no label Image.
     */
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        manager.openFile(Image, imageTreatment, listInt, jList1, list, map);
+    private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openButtonActionPerformed
+        manager.openFile(Image, imageTreatment, listInt, listRegionSegments, list, map);
         
         listInt.clear();
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_openButtonActionPerformed
     
     /**
      * Método para salvar novas regiões da imagem.
      * @param evt 
      */
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         if(mouseX1 == 0 || mouseY1 == 0)
             JOptionPane.showMessageDialog(null,"A área não pode ser registrada, pois não foi selecionada na imagem.", "Arquivo",  JOptionPane.INFORMATION_MESSAGE);
         else if(jTextField4.getText() == null)
@@ -382,7 +379,7 @@ public class GUI extends javax.swing.JFrame {
 
         else{
             writeFiles.writeInFileRegions(imageTreatment.getFilename(), jTextField4.getText(), Integer.toString(mouseX1), Integer.toString(mouseY1), Integer.toString(mouseX2), Integer.toString(mouseY2));
-            manager.transformTextJList1(imageTreatment, jList1, list, map);
+            manager.transformTextJList1(imageTreatment, listRegionSegments, list, map);
         }   
         
         mouseX1=0;
@@ -391,7 +388,7 @@ public class GUI extends javax.swing.JFrame {
         mouseY2=0;
         initRegions();
         map = fileToTAD.transformToMap(imageTreatment.getFilename());
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_addButtonActionPerformed
     
     /**
      * Método para capturar as coordenas da imagem clicadas pelo mouse.
@@ -417,11 +414,11 @@ public class GUI extends javax.swing.JFrame {
      * Método para realizar eventos quando o mouse clickar em algum elemento da Jlist1.
      * @param evt 
      */
-    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+    private void listRegionSegmentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listRegionSegmentsMouseClicked
         if (evt.getClickCount() == 2) {
-            int index = jList1.locationToIndex(evt.getPoint());
+            int index = listRegionSegments.locationToIndex(evt.getPoint());
             if (index >= 0) {
-                Object o = jList1.getModel().getElementAt(index);
+                Object o = listRegionSegments.getModel().getElementAt(index);
                 Integer coordenadas[] = map.get(o.toString());
                 System.out.println(map.get("blusa"));
                 int region1 = imageTreatment.defineRegion(coordenadas[0], coordenadas[1], seg);
@@ -436,49 +433,49 @@ public class GUI extends javax.swing.JFrame {
 
           }
         }
-    }//GEN-LAST:event_jList1MouseClicked
+    }//GEN-LAST:event_listRegionSegmentsMouseClicked
     
     /**
      * Método para realizar eventos quando o mouse clickar em algum elemento da Jlist2.
      * @param evt 
      */
-    private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
+    private void listFilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listFilesMouseClicked
         if (evt.getClickCount() == 2) {
-            int index = jList2.locationToIndex(evt.getPoint());
+            int index = listFiles.locationToIndex(evt.getPoint());
             if (index >= 0) {
-                Object o = jList2.getModel().getElementAt(index);
+                Object o = listFiles.getModel().getElementAt(index);
                 System.out.println(map.get("blusa"));       
-                manager.readValues(o.toString(), imageTreatment, jTextField1, jTextField2, jTextField3);
+                manager.readValues(o.toString(), imageTreatment, blurLvlText, colorLvlText, sizeLvlText);
                 
                 seg        = imageTreatment.imageSegmentation(imageTreatment.getFilename(), imageTreatment.getBlurLevel(), imageTreatment.getColor(), imageTreatment.getMinSize());
                 Image.setIcon(imageTreatment.markedImage(seg));
-                manager.transformTextJList1(imageTreatment, jList1, list, map);
+                manager.transformTextJList1(imageTreatment, listRegionSegments, list, map);
                 map = fileToTAD.transformToMap(imageTreatment.getFilename());
                 listInt.clear();
                 listInt = tadManipulation.addValue(listInt, seg.getTotalRegions());
              }
         }
         
-    }//GEN-LAST:event_jList2MouseClicked
+    }//GEN-LAST:event_listFilesMouseClicked
     
     /**
      * Método para ao clickar no botão "Pesquisar" e pegar o elemento do jComboBox para fazer uma busca de imagens a
      * partir do elemento do jComoBox.
      * @param evt 
      */
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
         String selected = jComboBox1.getSelectedItem().toString();
         System.out.println(System.getProperty("user.dir")+"\\imgs");
         
         try {
-            manager.transformTextJList2(selected, jList2, listRegions);
+            manager.transformTextJList2(selected, listFiles, listRegions);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         
        
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_findButtonActionPerformed
     /**
         Método que Inicializa o jComboBox com todas as regiões.
     */
@@ -540,23 +537,23 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Image;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton addButton;
+    private javax.swing.JTextField blurLvlText;
+    private javax.swing.JButton buttonSegment;
+    private javax.swing.JTextField colorLvlText;
+    private javax.swing.JButton findButton;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JList listFiles;
+    private javax.swing.JList listRegionSegments;
+    private javax.swing.JButton openButton;
+    private javax.swing.JButton showButtonSegment;
+    private javax.swing.JTextField sizeLvlText;
     // End of variables declaration//GEN-END:variables
 }
