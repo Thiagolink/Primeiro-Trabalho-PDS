@@ -27,31 +27,33 @@ public class ScaleImage {
      * @return aux Caminho da imagem salva na pasta de imagens.
      * @throws IOException 
      */
-    public String getScaledImage(String filename, int w, int h) throws IOException{
+    public String getScaledImage(String filename, int width , int height) throws IOException{
         File file = new File(filename);
         BufferedImage icc = ImageIO.read(file);
-        BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-        Graphics2D g2 = resizedImg.createGraphics();
+        BufferedImage resizedImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D graphics2D = resizedImg.createGraphics();
 
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2.drawImage(icc, 0, 0, w, h, null);
-        g2.dispose();
+        graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        graphics2D.drawImage(icc, 0, 0, width, height, null);
+        graphics2D.dispose();
         
         
-        String aux = System.getProperty("user.dir")+"\\imgs\\";
+        String diretorioImagemCaminho = System.getProperty("user.dir")+"\\imgs\\";
+        File fileImagem;
+        String imagemCaminho;
         for(int i =0; i<100; i++){
-            File f = new File(aux+"model"+i+".jpg");
-            String aux2 = aux+"model"+i+".jpg";
-            if(!(f.exists() && !f.isDirectory())){
-                aux = aux2;
+            fileImagem = new File(diretorioImagemCaminho+"model"+i+".jpg");
+            imagemCaminho = diretorioImagemCaminho+"model"+i+".jpg";
+            if(!(fileImagem.exists() && !fileImagem.isDirectory())){
+                diretorioImagemCaminho = imagemCaminho;
                 break;
             }
         }
-        File outputfile = new File(aux);
-        System.err.append(aux);
+        File outputfile = new File(diretorioImagemCaminho);
+        System.err.append(diretorioImagemCaminho);
         ImageIO.write(resizedImg, "jpg", outputfile);
         
-        return aux;
+        return diretorioImagemCaminho;
         
     }
     

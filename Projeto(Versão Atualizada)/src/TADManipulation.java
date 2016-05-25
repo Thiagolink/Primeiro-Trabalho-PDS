@@ -55,25 +55,27 @@ public class TADManipulation implements IFileToTAD{
         @return list ArrayList com o caminho de todas as imagens que possuem a região selecionada.
     */
     public ArrayList<String> regionFile(String region) throws FileNotFoundException{
-        ArrayList<String> list = new ArrayList<>();
-        ArrayList<String> listaux = new ArrayList<>();
+        ArrayList<String> listCaminhoImagem = new ArrayList<>();
+        ArrayList<String> listCaminhoImagemAuxiliar = new ArrayList<>();
         File folder = new File(System.getProperty("user.dir")+"\\imgs");
+        File file;
+        String caminhoImagem;
         File[] listOfFiles = folder.listFiles();
         
         for (int i = 0; i < listOfFiles.length; i++) {
-            File file = listOfFiles[i];
+            file = listOfFiles[i];
             if (file.isFile() && file.getName().endsWith("regioes.txt")) {
-                listaux = fileToTAD.transformToArrayList(file.getAbsolutePath());
-                if(listaux.contains(region)){
-                    String aux = file.getAbsolutePath();
-                    aux = aux.substring(0, aux.length() - 11);
-                    aux = aux +".jpg";
-                    list.add(aux);
+                listCaminhoImagemAuxiliar = fileToTAD.transformToArrayList(file.getAbsolutePath());
+                if(listCaminhoImagemAuxiliar.contains(region)){
+                    caminhoImagem = file.getAbsolutePath();
+                    caminhoImagem = caminhoImagem.substring(0, caminhoImagem.length() - 11);
+                    caminhoImagem = caminhoImagem +".jpg";
+                    listCaminhoImagem.add(caminhoImagem);
                 }
             } 
         }     
 
-        return list;
+        return listCaminhoImagem;
     }       
 
     @Override
