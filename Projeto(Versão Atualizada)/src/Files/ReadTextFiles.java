@@ -35,13 +35,13 @@ public class ReadTextFiles implements IReadFiles{
         filename = rename.renameFileNameValue(filename);
         
         try{
-            Scanner s = new Scanner(new File(filename));
-            while (s.hasNext()){
-                blur = Float.parseFloat(s.next());
-                s.next();
-                s.next();
+            Scanner fileValorBlur = new Scanner(new File(filename));
+            while (fileValorBlur.hasNext()){
+                blur = Float.parseFloat(fileValorBlur.next());
+                fileValorBlur.next();
+                fileValorBlur.next();
             }
-            s.close();
+            fileValorBlur.close();
         }
         catch(FileNotFoundException e){
             JOptionPane.showMessageDialog(null, "Arquivo não encontrado", "Transform",  JOptionPane.INFORMATION_MESSAGE);
@@ -58,13 +58,13 @@ public class ReadTextFiles implements IReadFiles{
         filename = rename.renameFileNameValue(filename);
         
         try{
-            Scanner s = new Scanner(new File(filename));
-            while (s.hasNext()){
-                s.next();
-                color = Integer.parseInt(s.next());
-                s.next();
+            Scanner fileValorColor = new Scanner(new File(filename));
+            while (fileValorColor.hasNext()){
+                fileValorColor.next();
+                color = Integer.parseInt(fileValorColor.next());
+                fileValorColor.next();
             }
-            s.close();
+            fileValorColor.close();
         }
         catch(FileNotFoundException e){
             JOptionPane.showMessageDialog(null, "Arquivo não encontrado", "Transform",  JOptionPane.INFORMATION_MESSAGE);
@@ -82,13 +82,13 @@ public class ReadTextFiles implements IReadFiles{
         filename = rename.renameFileNameValue(filename);
         
         try{
-            Scanner s = new Scanner(new File(filename));
-            while (s.hasNext()){
-                s.next();
-                s.next();
-                size = Integer.parseInt(s.next());
+            Scanner fileValorSize = new Scanner(new File(filename));
+            while (fileValorSize.hasNext()){
+                fileValorSize.next();
+                fileValorSize.next();
+                size = Integer.parseInt(fileValorSize.next());
             }
-            s.close();
+            fileValorSize.close();
         }
         catch(FileNotFoundException e){
             JOptionPane.showMessageDialog(null, "Arquivo não encontrado", "Transform",  JOptionPane.INFORMATION_MESSAGE);
