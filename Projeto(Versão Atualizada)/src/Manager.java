@@ -52,7 +52,7 @@ public class Manager {
     }
     
     
-    public void openFile(JLabel Image, Segmentation imageTreatment, ArrayList<Integer> listInt, JList jList1, ArrayList<String> list, Map<String, Integer[]> map){
+    public void openFile(JLabel areaImage, Segmentation imageTreatment, ArrayList<Integer> listInt, JList listRegionSegments, ArrayList<String> listNameRegion, Map<String, Integer[]> mapImageTreatment){
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File file = new File("C:\\Users\\Thiago\\Desktop\\ProjetoLP2\\ProjetoLP2\\imgs");
@@ -68,18 +68,18 @@ public class Manager {
                 Logger.getLogger(SystemSegmentationGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         
-            Image.setIcon(imageTreatment.originalImage(imageTreatment.getFilename()));
+            areaImage.setIcon(imageTreatment.originalImage(imageTreatment.getFilename()));
         
-            transformTextJList1(imageTreatment, jList1, list, map);
+            transformTextListImage(imageTreatment, listRegionSegments, listNameRegion, mapImageTreatment);
             
         }
     }
     
-    public void saveInformation(Segmentation image, String jTextField1, String jTextField2, String jTextField3){
+    public void saveInformation(Segmentation imageTreatment, String blurLvl, String colorLvl, String sizeLvl){
             
-            image.setColor(Integer.parseInt(jTextField2));
-            image.setBlurLevel(Double.parseDouble(jTextField1));
-            image.setMinSize(Integer.parseInt(jTextField3));
+            imageTreatment.setColor(Integer.parseInt(colorLvl));
+            imageTreatment.setBlurLevel(Double.parseDouble(blurLvl));
+            imageTreatment.setMinSize(Integer.parseInt(sizeLvl));
     }
     
     /**
@@ -87,27 +87,27 @@ public class Manager {
         * e coloca os elementos no JList1.
         @param filename Nome do arquivo de texto.
     */    
-    public void transformTextJList1(Segmentation imageTreatment, JList jList1, ArrayList<String> list, Map<String, Integer[]> map) {
+    public void transformTextListImage(Segmentation imageTreatment, JList listRegionSegments, ArrayList<String> listNameRegion, Map<String, Integer[]> mapImageTreatment) {
         DefaultListModel model = new DefaultListModel();
                 
-        map = fileToTAD.transformToMap(imageTreatment.getFilename());
-        list = fileToTAD.transformToArrayList(imageTreatment.getFilename());
+        mapImageTreatment = fileToTAD.transformToMap(imageTreatment.getFilename());
+        listNameRegion = fileToTAD.transformToArrayList(imageTreatment.getFilename());
 
-        list = tadManipulation.sort(list);
+        listNameRegion = tadManipulation.sort(listNameRegion);
      
-        Iterator<String> it = list.iterator();
+        Iterator<String> it = listNameRegion.iterator();
         while(it.hasNext()){
             model.addElement(it.next());
         }
         
-        jList1.setModel(model);
+        listRegionSegments.setModel(model);
     }
     
     /**
         Método que dada a região escolhida, irá colocar na jComboBox todos as imagens que possuem a região selecionada.
         @param region Região que deverá ser procurada nas imagens.
     */
-    public void transformTextJList2(String region, JList jList2, ArrayList<String> listRegions) throws FileNotFoundException{
+    public void transformTextListRegion(String region, JList listFiles, ArrayList<String> listRegions) throws FileNotFoundException{
         DefaultListModel model = new DefaultListModel();
         
         listRegions = tadManipulation.regionFile(region);
@@ -117,29 +117,29 @@ public class Manager {
             model.addElement(it.next());
         }
         
-        jList2.setModel(model);
+        listFiles.setModel(model);
     }
     
-    public void readValues(String filename, Segmentation imageTreatment, JTextField jTextField1, JTextField jTextField2, JTextField jTextField3){
+    public void readValues(String filename, Segmentation imageTreatment, JTextField blurLvl, JTextField colorLvl, JTextField sizeLvl){
         imageTreatment.setFilename(filename);
         imageTreatment.setBlurLevel(readFiles.valueImagesBlur(imageTreatment.getFilename(), imageTreatment.getBlurLevel()));
-        jTextField1.setText(String.valueOf(imageTreatment.getBlurLevel()).substring(0, 4));
+        blurLvl.setText(String.valueOf(imageTreatment.getBlurLevel()).substring(0, 4));
         imageTreatment.setColor(readFiles.valueImagesColor(imageTreatment.getFilename(), imageTreatment.getColor()));
-        jTextField2.setText(String.valueOf(imageTreatment.getColor()));
+        colorLvl.setText(String.valueOf(imageTreatment.getColor()));
         imageTreatment.setMinSize(readFiles.valueImagesSize(imageTreatment.getFilename(), imageTreatment.getMinSize()));
-        jTextField3.setText(String.valueOf(imageTreatment.getMinSize()));
+        sizeLvl.setText(String.valueOf(imageTreatment.getMinSize()));
     }
     
-    public void colorDeterminedArea(Object o, JLabel Image, ImageInformation seg, Segmentation imageTreatment, ArrayList<Integer> listInt, Map<String, Integer[]> map){
+    public void colorDeterminedArea(Object o, JLabel Image, ImageInformation segment, Segmentation imageTreatment, ArrayList<Integer> listInt, Map<String, Integer[]> map){
         Integer coordenadas[] = map.get(o.toString());
-            int region1 = imageTreatment.defineRegion(coordenadas[0], coordenadas[1], seg);
+            int region1 = imageTreatment.defineRegion(coordenadas[0], coordenadas[1], segment);
                 
             int region2;
             if (coordenadas[2] != 0 && coordenadas[3] != 0){
-                region2 = imageTreatment.defineRegion(coordenadas[2], coordenadas[3], seg);
-                Image.setIcon(toColor.whitening(seg, region2, listInt));
+                region2 = imageTreatment.defineRegion(coordenadas[2], coordenadas[3], segment);
+                Image.setIcon(toColor.whitening(segment, region2, listInt));
                 }
-            Image.setIcon(toColor.whitening(seg, region1, listInt));
+            Image.setIcon(toColor.whitening(segment, region1, listInt));
     }
 }
 

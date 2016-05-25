@@ -29,12 +29,12 @@ public class ScaleImage {
      */
     public String getScaledImage(String filename, int width , int height) throws IOException{
         File file = new File(filename);
-        BufferedImage icc = ImageIO.read(file);
+        BufferedImage imageIcon = ImageIO.read(file);
         BufferedImage resizedImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics2D = resizedImg.createGraphics();
 
         graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        graphics2D.drawImage(icc, 0, 0, width, height, null);
+        graphics2D.drawImage(imageIcon, 0, 0, width, height, null);
         graphics2D.dispose();
         
         

@@ -85,7 +85,7 @@ public class SystemSegmentationGUI extends javax.swing.JFrame {
     ICreateFiles createTextFiles = new CreateTextFiles();
     
     //ArrayList com o nome das regiões da imagem para ser usado como índice para o map.
-    ArrayList<String> list = new ArrayList<>();
+    ArrayList<String> listNameRegion = new ArrayList<>();
     
     //ArrayList com regiões já marcadas
     ArrayList<Integer> listInt = new ArrayList<>();
@@ -97,7 +97,7 @@ public class SystemSegmentationGUI extends javax.swing.JFrame {
     Set<String> setRegionsNames = new HashSet<>();
     
     //Map com o índice sendo o nome e o Intenger sendo os valor de x e y da imageTreatment.
-    Map<String, Integer[]> map = new HashMap<>();
+    Map<String, Integer[]> mapImageTreatment = new HashMap<>();
     
 
     
@@ -362,7 +362,7 @@ public class SystemSegmentationGUI extends javax.swing.JFrame {
         Método que cria o botão Abrir Arquivo, define o caminho até a imagem e coloca no label Image.
     */
     private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openButtonActionPerformed
-        manager.openFile(areaImage, imageTreatment, listInt, listRegionSegments, list, map);
+        manager.openFile(areaImage, imageTreatment, listInt, listRegionSegments, listNameRegion, mapImageTreatment);
         
         listInt.clear();
         
@@ -377,14 +377,14 @@ public class SystemSegmentationGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"A área não pode ser registrada, pois não foi selecionada na imagem.", "Arquivo",  JOptionPane.INFORMATION_MESSAGE);
         else if(areaText.getText() == null)
             JOptionPane.showMessageDialog(null,"A área não pode ser registrada, pois não foi definido um nome.", "Arquivo",  JOptionPane.INFORMATION_MESSAGE);
-        else if(checking.checkName(list, areaText.getText()))
+        else if(checking.checkName(listNameRegion, areaText.getText()))
             JOptionPane.showMessageDialog(null,"A área não pode ser registrada, pois já existe uma área com esse nome.", "Arquivo",  JOptionPane.INFORMATION_MESSAGE);
-        else if(checking.checkRegion(list, map, imageTreatment.defineRegion(mouseX1, mouseY1, seg), seg))
+        else if(checking.checkRegion(listNameRegion, mapImageTreatment, imageTreatment.defineRegion(mouseX1, mouseY1, seg), seg))
             JOptionPane.showMessageDialog(null,"A área não pode ser registrada, pois essa área já foi registrada.", "Arquivo",  JOptionPane.INFORMATION_MESSAGE);
 
         else{
             writeFiles.writeInFileRegions(imageTreatment.getFilename(), areaText.getText(), Integer.toString(mouseX1), Integer.toString(mouseY1), Integer.toString(mouseX2), Integer.toString(mouseY2));
-            manager.transformTextJList1(imageTreatment, listRegionSegments, list, map);
+            manager.transformTextListImage(imageTreatment, listRegionSegments, listNameRegion, mapImageTreatment);
         }   
         
         mouseX1=0;
@@ -392,7 +392,7 @@ public class SystemSegmentationGUI extends javax.swing.JFrame {
         mouseY1=0;
         mouseY2=0;
         initRegions();
-        map = fileToTAD.transformToMap(imageTreatment.getFilename());
+        mapImageTreatment = fileToTAD.transformToMap(imageTreatment.getFilename());
     }//GEN-LAST:event_addButtonActionPerformed
     
     /**
@@ -424,8 +424,8 @@ public class SystemSegmentationGUI extends javax.swing.JFrame {
             int index = listRegionSegments.locationToIndex(evt.getPoint());
             if (index >= 0) {
                 Object o = listRegionSegments.getModel().getElementAt(index);
-                Integer coordenadas[] = map.get(o.toString());
-                System.out.println(map.get("blusa"));
+                Integer coordenadas[] = mapImageTreatment.get(o.toString());
+                System.out.println(mapImageTreatment.get("blusa"));
                 int region1 = imageTreatment.defineRegion(coordenadas[0], coordenadas[1], seg);
                 
                 int region2;
@@ -448,14 +448,14 @@ public class SystemSegmentationGUI extends javax.swing.JFrame {
         if (evt.getClickCount() == 2) {
             int index = listFiles.locationToIndex(evt.getPoint());
             if (index >= 0) {
-                Object o = listFiles.getModel().getElementAt(index);
-                System.out.println(map.get("blusa"));       
-                manager.readValues(o.toString(), imageTreatment, blurLvlText, colorLvlText, sizeLvlText);
+                Object object = listFiles.getModel().getElementAt(index);
+                System.out.println(mapImageTreatment.get("blusa"));       
+                manager.readValues(object.toString(), imageTreatment, blurLvlText, colorLvlText, sizeLvlText);
                 
                 seg        = imageTreatment.imageSegmentation(imageTreatment.getFilename(), imageTreatment.getBlurLevel(), imageTreatment.getColor(), imageTreatment.getMinSize());
                 areaImage.setIcon(imageTreatment.markedImage(seg));
-                manager.transformTextJList1(imageTreatment, listRegionSegments, list, map);
-                map = fileToTAD.transformToMap(imageTreatment.getFilename());
+                manager.transformTextListImage(imageTreatment, listRegionSegments, listNameRegion, mapImageTreatment);
+                mapImageTreatment = fileToTAD.transformToMap(imageTreatment.getFilename());
                 listInt.clear();
                 listInt = tadManipulation.addValue(listInt, seg.getTotalRegions());
              }
@@ -473,7 +473,7 @@ public class SystemSegmentationGUI extends javax.swing.JFrame {
         System.out.println(System.getProperty("user.dir")+"\\imgs");
         
         try {
-            manager.transformTextJList2(selected, listFiles, listRegions);
+            manager.transformTextListRegion(selected, listFiles, listRegions);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(SystemSegmentationGUI.class.getName()).log(Level.SEVERE, null, ex);
         }

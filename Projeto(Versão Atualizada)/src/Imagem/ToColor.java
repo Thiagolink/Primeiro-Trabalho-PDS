@@ -32,10 +32,10 @@ public class ToColor {
 
         int dataBuffInt = image.getRGB(x,y); 
 
-        Color c = new Color(dataBuffInt);
-        int redColor = c.getRed()/2;
-        int greenColor = c.getGreen()/2;
-        int blueColor = c.getBlue()/2;
+        Color colorImagem = new Color(dataBuffInt);
+        int redColor = colorImagem.getRed()/2;
+        int greenColor = colorImagem.getGreen()/2;
+        int blueColor = colorImagem.getBlue()/2;
         int color = (redColor << 16) | (greenColor << 8) | blueColor;
         
         return color;
@@ -49,10 +49,10 @@ public class ToColor {
         @param list Vetor dizendo quais áreas já estão esbranqueçadas e quais estão escuras.
         @return icc Imagem pintada de acordo com as regiões selecionadas.
     */
-    public ImageIcon whitening(ImageInformation seg, int region, ArrayList<Integer> list){
-        BufferedImage img    = seg.getRegionMarkedImage();
+    public ImageIcon whitening(ImageInformation segment, int region, ArrayList<Integer> list){
+        BufferedImage imageMarked    = segment.getRegionMarkedImage();
         int count            = 0;
-        int[] markedpixels   = seg.getSegmentedImageMap();
+        int[] markedpixels   = segment.getSegmentedImageMap();
 
         
         if(list.get(region) == 1)
@@ -60,18 +60,18 @@ public class ToColor {
         else
             list.set(region, 1);
         
-        for(int j = 0; j < seg.getHeight(); j++){
-            for(int i = 0; i < seg.getWidth(); i++){
+        for(int j = 0; j < segment.getHeight(); j++){
+            for(int i = 0; i < segment.getWidth(); i++){
                 int aux = markedpixels[count];
                 if(list.get(aux) != 1)
-                    img.setRGB(i, j, darken(img, i, j));
+                    imageMarked.setRGB(i, j, darken(imageMarked, i, j));
                 count++;
             }
         }           
-        ImageIcon icc = new ImageIcon(img);
+        ImageIcon imageIcon = new ImageIcon(imageMarked);
         
         
-        return icc;
+        return imageIcon;
     }
     
     

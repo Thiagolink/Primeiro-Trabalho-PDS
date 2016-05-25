@@ -54,15 +54,15 @@ public class Segmentation {
         Define a região segmentada de acordo com os valores de x e y.
         @param x Localização x na imagem.
         @param y Localização y na imagem.
-        @param seg Informação da imagem segmentada.
+        @param segment Informação da imagem segmentada.
      * @return 
     */
-    public int defineRegion(int x, int y, ImageInformation seg){
-        int[] markedpixels   = seg.getSegmentedImageMap();
+    public int defineRegion(int x, int y, ImageInformation segment){
+        int[] markedpixels   = segment.getSegmentedImageMap();
         int aux = 0;
         int count = 0;
-        for(int j = 0; j < seg.getHeight(); j++){
-            for(int i = 0; i < seg.getWidth(); i++){
+        for(int j = 0; j < segment.getHeight(); j++){
+            for(int i = 0; i < segment.getWidth(); i++){
                 if(x == i && y == j)
                     aux= count;
                 count++;
@@ -84,8 +84,8 @@ public class Segmentation {
     
     
     
-    public ImageInformation imageSegmentation(String filename, double blur, int color, int size){
-        ImageInformation seg = ImageSegmentation.performSegmentation(filename, blur, color, size);
+    public ImageInformation imageSegmentation(String filename, double blurLvl, int colorLvl, int sizeLvl){
+        ImageInformation seg = ImageSegmentation.performSegmentation(filename, blurLvl, colorLvl, sizeLvl);
         return seg;
     }
     
@@ -101,8 +101,8 @@ public class Segmentation {
         @return imagem em formato de ícone.
     */
     public ImageIcon originalImage(String filename){
-        ImageIcon icc = new ImageIcon(filename);
-        return icc;
+        ImageIcon iconImage = new ImageIcon(filename);
+        return iconImage;
     }
     
     /**
@@ -117,11 +117,11 @@ public class Segmentation {
     /**
         Método para devolver a imagem segmentada.
         @param seg Informação da segmentação.
-        @return icc ImageIcon da imagem segmentada.
+        @return iconImage ImageIcon da imagem segmentada.
     */
-    public ImageIcon markedImage(ImageInformation seg){
-        ImageIcon icc        = new ImageIcon(seg.getRegionMarkedImage());
-        return icc;
+    public ImageIcon markedImage(ImageInformation segment){
+        ImageIcon iconImage        = new ImageIcon(segment.getRegionMarkedImage());
+        return iconImage;
     }
     
     
